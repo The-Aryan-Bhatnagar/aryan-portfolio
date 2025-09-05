@@ -1,0 +1,920 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryan Bhatnagar - Data Analyst | BI Developer</title>
+    <meta name="description" content="Data Analyst and BI Developer specializing in Python, SQL, Power BI, and Tableau. Turning raw data into actionable insights.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%232563eb'>AB</text></svg>">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["Inter", "system-ui", "sans-serif"],
+                }
+            },
+        }
+    };
+    </script>
+    
+    <style>
+        :root {
+            --background: hsl(0 0% 100%);
+            --foreground: hsl(222 84% 4.9%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(222 84% 4.9%);
+            --primary: hsl(221 83% 53%);
+            --primary-foreground: hsl(210 40% 98%);
+            --secondary: hsl(214 100% 92%);
+            --secondary-foreground: hsl(222 47% 11%);
+            --muted: hsl(210 40% 96%);
+            --muted-foreground: hsl(215 16% 46%);
+            --accent: hsl(221 83% 53%);
+            --accent-foreground: hsl(210 40% 98%);
+            --border: hsl(214 32% 91%);
+            --input: hsl(214 32% 91%);
+            --ring: hsl(221 83% 53%);
+            --radius: 0.75rem;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+        }
+        
+        .skill-progress {
+            transition: width 2s ease-in-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+    </style>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-background text-foreground font-sans">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-md border-b border-border z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-xl font-bold text-primary">AB</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-foreground hover:text-primary transition-colors duration-200">Home</a>
+                        <a href="#about" class="text-foreground hover:text-primary transition-colors duration-200">About</a>
+                        <a href="#skills" class="text-foreground hover:text-primary transition-colors duration-200">Skills</a>
+                        <a href="#projects" class="text-foreground hover:text-primary transition-colors duration-200">Projects</a>
+                        <a href="#certifications" class="text-foreground hover:text-primary transition-colors duration-200">Certifications</a>
+                        <a href="#resume" class="text-foreground hover:text-primary transition-colors duration-200">Resume</a>
+                        <a href="#contact" class="text-foreground hover:text-primary transition-colors duration-200">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="mobile-menu-btn text-foreground hover:text-primary focus:outline-none focus:text-primary transition duration-150 ease-in-out">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-menu hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border">
+                <a href="#home" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200">Home</a>
+                <a href="#about" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200">About</a>
+                <a href="#skills" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200">Skills</a>
+                <a href="#projects" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200">Projects</a>
+                <a href="#certifications" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200">Certifications</a>
+                <a href="#resume" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200">Resume</a>
+                <a href="#contact" class="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center gradient-bg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center animate-fadeInUp">
+                <div class="mb-8">
+                    <!-- Professional headshot placeholder -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400" alt="Aryan Bhatnagar - Professional headshot" class="w-32 h-32 rounded-full mx-auto shadow-2xl border-4 border-white" data-mock="true" />
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
+                    Aryan Bhatnagar
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 mb-6">
+                    Data Analyst | BI Developer | Lifelong Learner
+                </p>
+                <p class="text-lg text-blue-200 mb-8 max-w-2xl mx-auto">
+                    Turning raw data into actionable insights through advanced analytics and visualization
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#resume" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg">
+                        View Resume
+                    </a>
+                    <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors duration-200">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-background">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">About Me</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h3 class="text-2xl font-semibold text-foreground mb-6">Hello! I'm Aryan</h3>
+                    <div class="space-y-4 text-muted-foreground">
+                        <p>
+                            I'm a passionate Data Analyst and BI Developer with a strong foundation in transforming complex datasets into meaningful business insights. My journey in data science combines technical expertise with strategic thinking to drive data-driven decision making.
+                        </p>
+                        <p>
+                            Currently pursuing my education while building practical experience in data analytics, I specialize in <span class="text-primary font-medium">Python, SQL, Power BI, and Tableau</span>. I'm particularly interested in machine learning applications and advanced data visualization techniques.
+                        </p>
+                        <p>
+                            When I'm not analyzing data, you can find me exploring the latest trends in AI and machine learning, contributing to open-source projects, or sharing my knowledge through blog posts and community discussions.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-lg font-semibold text-foreground mb-4">Core Competencies</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">SQL</span>
+                            <span class="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Power BI</span>
+                            <span class="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Tableau</span>
+                            <span class="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Data Visualization</span>
+                            <span class="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 md:order-2 text-center">
+                    <!-- Professional photo placeholder -->
+                    <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=500" alt="Aryan Bhatnagar working with data analytics" class="rounded-2xl shadow-2xl w-full max-w-md mx-auto" data-mock="true" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-muted">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Skills & Expertise</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Programming Skills -->
+                <div class="bg-card rounded-2xl p-8 shadow-lg hover-scale">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-code text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-semibold text-card-foreground">Programming</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-card-foreground font-medium">Python</span>
+                                <span class="text-muted-foreground">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-card-foreground font-medium">SQL</span>
+                                <span class="text-muted-foreground">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-card-foreground font-medium">R</span>
+                                <span class="text-muted-foreground">70%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BI Tools -->
+                <div class="bg-card rounded-2xl p-8 shadow-lg hover-scale">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-chart-bar text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-semibold text-card-foreground">BI Tools</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-card-foreground font-medium">Power BI</span>
+                                <span class="text-muted-foreground">88%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-card-foreground font-medium">Tableau</span>
+                                <span class="text-muted-foreground">82%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-card-foreground font-medium">Looker</span>
+                                <span class="text-muted-foreground">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Skills -->
+                <div class="bg-card rounded-2xl p-8 shadow-lg hover-scale">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-tools text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-semibold text-card-foreground">Analytics & ML</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-card-foreground font-medium">Excel</span>
+                                <span class="text-muted-foreground">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-card-foreground font-medium">Data Cleaning</span>
+                                <span class="text-muted-foreground">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-card-foreground font-medium">Machine Learning</span>
+                                <span class="text-muted-foreground">78%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full skill-progress" style="width: 78%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-background">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Featured Projects</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+                <p class="text-muted-foreground mt-4 max-w-2xl mx-auto">
+                    Explore some of my recent data analysis and visualization projects that demonstrate my technical skills and problem-solving abilities.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-card rounded-2xl shadow-lg overflow-hidden hover-scale" data-mock="true">
+                    <!-- Sales dashboard analytics visualization -->
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Sales Analytics Dashboard" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-card-foreground mb-3">Sales Analytics Dashboard</h3>
+                        <p class="text-muted-foreground mb-4">
+                            Interactive Power BI dashboard analyzing sales performance across multiple regions with predictive modeling for future trends.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">Power BI</span>
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">SQL</span>
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">Python</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-primary hover:text-accent font-medium" data-implementation="Link to GitHub repository">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="#" class="text-primary hover:text-accent font-medium" data-implementation="Link to live demo">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-card rounded-2xl shadow-lg overflow-hidden hover-scale" data-mock="true">
+                    <!-- Customer behavior analysis charts and graphs -->
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Customer Behavior Analysis" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-card-foreground mb-3">Customer Behavior Analysis</h3>
+                        <p class="text-muted-foreground mb-4">
+                            Machine learning model to predict customer churn using advanced analytics and feature engineering techniques.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">Python</span>
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">Scikit-learn</span>
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">Pandas</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-primary hover:text-accent font-medium" data-implementation="Link to GitHub repository">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="#" class="text-primary hover:text-accent font-medium" data-implementation="Link to live demo">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-card rounded-2xl shadow-lg overflow-hidden hover-scale" data-mock="true">
+                    <!-- Financial data visualization with multiple charts -->
+                    <img src="https://images.unsplash.com/photo-1590479773265-7464e5d48118?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Financial Data Visualization" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-card-foreground mb-3">Financial Data Visualization</h3>
+                        <p class="text-muted-foreground mb-4">
+                            Comprehensive Tableau dashboard for financial KPI tracking with real-time data integration and automated reporting.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">Tableau</span>
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">SQL</span>
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">ETL</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-primary hover:text-accent font-medium" data-implementation="Link to GitHub repository">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="#" class="text-primary hover:text-accent font-medium" data-implementation="Link to live demo">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="bg-card rounded-2xl shadow-lg overflow-hidden hover-scale" data-mock="true">
+                    <!-- Supply chain optimization analytics -->
+                    <img src="https://pixabay.com/get/ga1a5dede26ee2effd7b6246915c15ab155dacae512ea81cdec24e4f2594e34cbae0ec427f5429b3e87caa46601f6cc1224d85e3681c3bc49b08c09d702a8954a_1280.jpg" alt="Supply Chain Optimization" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-card-foreground mb-3">Supply Chain Optimization</h3>
+                        <p class="text-muted-foreground mb-4">
+                            Data-driven analysis of supply chain efficiency using optimization algorithms and predictive analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">Python</span>
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">Optimization</span>
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">Visualization</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-primary hover:text-accent font-medium" data-implementation="Link to GitHub repository">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="#" class="text-primary hover:text-accent font-medium" data-implementation="Link to live demo">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="bg-card rounded-2xl shadow-lg overflow-hidden hover-scale" data-mock="true">
+                    <!-- Market research analytics dashboard -->
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Market Research Analytics" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-card-foreground mb-3">Market Research Analytics</h3>
+                        <p class="text-muted-foreground mb-4">
+                            Comprehensive market analysis using web scraping, sentiment analysis, and competitive intelligence tools.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">Python</span>
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">NLP</span>
+                            <span class="bg-secondary text-secondary-foreground px-2 py-1 rounded text-xs">Web Scraping</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <a href="#" class="text-primary hover:text-accent font-medium" data-implementation="Link to GitHub repository">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="#" class="text-primary hover:text-accent font-medium" data-implementation="Link to live demo">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 bg-muted">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Certifications & Achievements</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+                <p class="text-muted-foreground mt-4 max-w-2xl mx-auto">
+                    Continuous learning through industry-recognized certifications and professional development programs.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Certification 1 -->
+                <div class="bg-card rounded-2xl p-6 shadow-lg hover-scale text-center" data-mock="true">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fab fa-microsoft text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-card-foreground mb-2">Microsoft Power BI Certification</h3>
+                    <p class="text-muted-foreground text-sm mb-4">Data Analyst Associate</p>
+                    <p class="text-xs text-muted-foreground">Issued: 2024 | Valid until: 2026</p>
+                    <button class="mt-4 text-primary hover:text-accent font-medium text-sm" data-implementation="Show certificate modal or link">
+                        View Certificate
+                    </button>
+                </div>
+                
+                <!-- Certification 2 -->
+                <div class="bg-card rounded-2xl p-6 shadow-lg hover-scale text-center" data-mock="true">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fab fa-python text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-card-foreground mb-2">Python for Data Science</h3>
+                    <p class="text-muted-foreground text-sm mb-4">Coursera Specialization</p>
+                    <p class="text-xs text-muted-foreground">Issued: 2024 | IBM & University of Michigan</p>
+                    <button class="mt-4 text-primary hover:text-accent font-medium text-sm" data-implementation="Show certificate modal or link">
+                        View Certificate
+                    </button>
+                </div>
+                
+                <!-- Certification 3 -->
+                <div class="bg-card rounded-2xl p-6 shadow-lg hover-scale text-center" data-mock="true">
+                    <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-card-foreground mb-2">Tableau Desktop Specialist</h3>
+                    <p class="text-muted-foreground text-sm mb-4">Data Visualization</p>
+                    <p class="text-xs text-muted-foreground">Issued: 2024 | Valid until: 2026</p>
+                    <button class="mt-4 text-primary hover:text-accent font-medium text-sm" data-implementation="Show certificate modal or link">
+                        View Certificate
+                    </button>
+                </div>
+                
+                <!-- Certification 4 -->
+                <div class="bg-card rounded-2xl p-6 shadow-lg hover-scale text-center" data-mock="true">
+                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-database text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-card-foreground mb-2">SQL for Data Analysis</h3>
+                    <p class="text-muted-foreground text-sm mb-4">Advanced SQL Techniques</p>
+                    <p class="text-xs text-muted-foreground">Issued: 2024 | LinkedIn Learning</p>
+                    <button class="mt-4 text-primary hover:text-accent font-medium text-sm" data-implementation="Show certificate modal or link">
+                        View Certificate
+                    </button>
+                </div>
+                
+                <!-- Certification 5 -->
+                <div class="bg-card rounded-2xl p-6 shadow-lg hover-scale text-center" data-mock="true">
+                    <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-card-foreground mb-2">HP Life Certification</h3>
+                    <p class="text-muted-foreground text-sm mb-4">Digital Literacy & Professional Skills</p>
+                    <p class="text-xs text-muted-foreground">Issued: 2023 | HP Foundation</p>
+                    <button class="mt-4 text-primary hover:text-accent font-medium text-sm" data-implementation="Show certificate modal or link">
+                        View Certificate
+                    </button>
+                </div>
+                
+                <!-- Certification 6 -->
+                <div class="bg-card rounded-2xl p-6 shadow-lg hover-scale text-center" data-mock="true">
+                    <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-card-foreground mb-2">Machine Learning Fundamentals</h3>
+                    <p class="text-muted-foreground text-sm mb-4">Stanford Online</p>
+                    <p class="text-xs text-muted-foreground">Issued: 2024 | Andrew Ng Course</p>
+                    <button class="mt-4 text-primary hover:text-accent font-medium text-sm" data-implementation="Show certificate modal or link">
+                        View Certificate
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-20 bg-background">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Resume</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+                <p class="text-muted-foreground mt-4 max-w-2xl mx-auto">
+                    Download my detailed resume or view it online to learn more about my experience and qualifications.
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-card rounded-2xl shadow-lg p-8">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-card-foreground mb-4">My Professional Resume</h3>
+                            <p class="text-muted-foreground mb-6">
+                                Comprehensive overview of my education, professional experience, skills, and achievements in data analytics and business intelligence.
+                            </p>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-primary mr-3"></i>
+                                    <span class="text-card-foreground">Detailed work experience and projects</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-primary mr-3"></i>
+                                    <span class="text-card-foreground">Technical skills and certifications</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-primary mr-3"></i>
+                                    <span class="text-card-foreground">Education and achievements</span>
+                                </div>
+                            </div>
+                            <div class="mt-8 space-y-4">
+                                <a href="#" class="inline-flex items-center bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent transition-colors duration-200" data-implementation="Download PDF resume">
+                                    <i class="fas fa-download mr-2"></i>
+                                    Download PDF Resume
+                                </a>
+                                <br>
+                                <a href="#" class="inline-flex items-center text-primary hover:text-accent font-medium" data-implementation="Open resume in new tab">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    View Online Version
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-muted rounded-xl p-6">
+                            <!-- Resume preview placeholder -->
+                            <div class="bg-white rounded-lg shadow-inner p-4 h-96 flex items-center justify-center" data-implementation="Embed PDF viewer or resume preview">
+                                <div class="text-center">
+                                    <i class="fas fa-file-pdf text-6xl text-red-500 mb-4"></i>
+                                    <p class="text-muted-foreground">Resume Preview</p>
+                                    <p class="text-sm text-muted-foreground">Click download to view full resume</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-muted">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Get In Touch</h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+                <p class="text-muted-foreground mt-4 max-w-2xl mx-auto">
+                    Ready to collaborate on your next data project? Let's discuss how I can help turn your data into actionable insights.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <!-- Contact Form -->
+                <div class="bg-card rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-xl font-semibold text-card-foreground mb-6">Send me a message</h3>
+                    <form class="space-y-6" data-implementation="Add form validation and submission handling">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-card-foreground mb-2">Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors duration-200" placeholder="Your full name" data-mock="true">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-card-foreground mb-2">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors duration-200" placeholder="your.email@example.com" data-mock="true">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-card-foreground mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-colors duration-200 resize-vertical" placeholder="Tell me about your project or how I can help..." data-mock="true"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent transition-colors duration-200" data-implementation="Add form submission logic">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="bg-card rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-xl font-semibold text-card-foreground mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-card-foreground">Email</h4>
+                                    <a href="mailto:aryan.bhatnagar@example.com" class="text-primary hover:text-accent" data-mock="true">aryan.bhatnagar@example.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fab fa-linkedin text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-card-foreground">LinkedIn</h4>
+                                    <a href="https://linkedin.com/in/aryan-bhatnagar" target="_blank" class="text-primary hover:text-accent" data-mock="true">linkedin.com/in/aryan-bhatnagar</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fab fa-github text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-card-foreground">GitHub</h4>
+                                    <a href="https://github.com/aryanbhatnagar" target="_blank" class="text-primary hover:text-accent" data-mock="true">github.com/aryanbhatnagar</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fab fa-instagram text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-card-foreground">Instagram</h4>
+                                    <a href="https://instagram.com/bhatnagararyan2601" target="_blank" class="text-primary hover:text-accent">@bhatnagararyan2601</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-card rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-xl font-semibold text-card-foreground mb-4">Let's Connect</h3>
+                        <p class="text-muted-foreground mb-6">
+                            I'm always interested in discussing new opportunities, collaborating on interesting projects, or simply connecting with fellow data enthusiasts.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="https://linkedin.com/in/aryan-bhatnagar" target="_blank" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white hover:bg-accent transition-colors duration-200" data-mock="true">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/aryanbhatnagar" target="_blank" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white hover:bg-accent transition-colors duration-200" data-mock="true">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://instagram.com/bhatnagararyan2601" target="_blank" class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white hover:bg-accent transition-colors duration-200">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-foreground text-background py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Aryan Bhatnagar</h3>
+                    <p class="text-gray-300 mb-4">
+                        Data Analyst | BI Developer | Lifelong Learner
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        Turning raw data into actionable insights through advanced analytics and visualization.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="#about" class="block text-gray-300 hover:text-white transition-colors duration-200">About</a>
+                        <a href="#skills" class="block text-gray-300 hover:text-white transition-colors duration-200">Skills</a>
+                        <a href="#projects" class="block text-gray-300 hover:text-white transition-colors duration-200">Projects</a>
+                        <a href="#certifications" class="block text-gray-300 hover:text-white transition-colors duration-200">Certifications</a>
+                        <a href="#resume" class="block text-gray-300 hover:text-white transition-colors duration-200">Resume</a>
+                        <a href="#contact" class="block text-gray-300 hover:text-white transition-colors duration-200">Contact</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Connect With Me</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="https://linkedin.com/in/aryan-bhatnagar" target="_blank" class="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center text-white hover:bg-primary transition-colors duration-200" data-mock="true">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/aryanbhatnagar" target="_blank" class="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center text-white hover:bg-primary transition-colors duration-200" data-mock="true">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://instagram.com/bhatnagararyan2601" target="_blank" class="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center text-white hover:bg-primary transition-colors duration-200">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <a href="mailto:aryan.bhatnagar@example.com" class="hover:text-white transition-colors duration-200" data-mock="true">aryan.bhatnagar@example.com</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2025 Aryan Bhatnagar | Built with ❤️ | All rights reserved
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        (function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        })();
+
+        // Smooth scrolling for navigation links
+        (function() {
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 70; // Account for fixed nav
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        const mobileMenu = document.querySelector('.mobile-menu');
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        })();
+
+        // Add active class to navigation links based on scroll position
+        (function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            function updateActiveLink() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-primary');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('text-primary');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveLink);
+            updateActiveLink(); // Call on load
+        })();
+
+        // Animate skill progress bars when they come into view
+        (function() {
+            const progressBars = document.querySelectorAll('.skill-progress');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const progressBar = entry.target;
+                        const width = progressBar.style.width;
+                        progressBar.style.width = '0%';
+                        setTimeout(() => {
+                            progressBar.style.width = width;
+                        }, 100);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            progressBars.forEach(bar => observer.observe(bar));
+        })();
+
+        // Form submission handling (placeholder)
+        (function() {
+            const contactForm = document.querySelector('#contact form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // TODO: Implement actual form submission logic
+                    // This could include form validation, API calls, etc.
+                    
+                    // Placeholder success message
+                    alert('Thank you for your message! I\'ll get back to you soon.');
+                    
+                    // Reset form
+                    this.reset();
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

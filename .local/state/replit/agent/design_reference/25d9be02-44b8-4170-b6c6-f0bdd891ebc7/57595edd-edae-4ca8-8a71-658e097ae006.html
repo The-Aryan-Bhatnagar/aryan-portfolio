@@ -1,0 +1,927 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryan Bhatnagar - Data Analyst | BI Developer | Lifelong Learner</title>
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzNCODJGNiIvPgo8dGV4dCB4PSI1IiB5PSIyMiIgZm9udC1mYW1pbHk9IkludGVyLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSJ3aGl0ZSI+QUI8L3RleHQ+Cjwvc3ZnPgo=" type="image/svg+xml">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["Inter", "system-ui", "sans-serif"],
+                }
+            },
+        }
+    };
+    </script>
+    
+    <style>
+        :root {
+            --background: hsl(210 40% 98%);
+            --foreground: hsl(222.2 84% 4.9%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(222.2 84% 4.9%);
+            --primary: hsl(221.2 83.2% 53.3%);
+            --primary-foreground: hsl(210 40% 98%);
+            --secondary: hsl(210 40% 96%);
+            --secondary-foreground: hsl(222.2 47.4% 11.2%);
+            --muted: hsl(210 40% 96%);
+            --muted-foreground: hsl(215.4 16.3% 46.9%);
+            --accent: hsl(210 40% 96%);
+            --accent-foreground: hsl(222.2 47.4% 11.2%);
+            --border: hsl(214.3 31.8% 91.4%);
+            --input: hsl(214.3 31.8% 91.4%);
+            --ring: hsl(221.2 83.2% 53.3%);
+            --radius: 0.75rem;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, hsl(210 40% 98%) 0%, hsl(220 40% 96%) 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar-blur {
+            backdrop-filter: blur(20px);
+            background: hsla(0, 0%, 100%, 0.8);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, hsl(221.2 83.2% 53.3%), hsl(262.1 83.3% 57.8%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .skill-bar {
+            background: linear-gradient(90deg, hsl(221.2 83.2% 53.3%), hsl(262.1 83.3% 57.8%));
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-pattern {
+            background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0);
+            background-size: 20px 20px;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-background text-foreground">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 navbar-blur border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-2xl font-bold gradient-text">AB</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-foreground hover:text-primary transition-colors duration-300 px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#about" class="text-foreground hover:text-primary transition-colors duration-300 px-3 py-2 text-sm font-medium">About</a>
+                        <a href="#skills" class="text-foreground hover:text-primary transition-colors duration-300 px-3 py-2 text-sm font-medium">Skills</a>
+                        <a href="#projects" class="text-foreground hover:text-primary transition-colors duration-300 px-3 py-2 text-sm font-medium">Projects</a>
+                        <a href="#certifications" class="text-foreground hover:text-primary transition-colors duration-300 px-3 py-2 text-sm font-medium">Certifications</a>
+                        <a href="#resume" class="text-foreground hover:text-primary transition-colors duration-300 px-3 py-2 text-sm font-medium">Resume</a>
+                        <a href="#contact" class="text-foreground hover:text-primary transition-colors duration-300 px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-foreground hover:text-primary">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-card border-t border-border">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-foreground hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="block px-3 py-2 text-foreground hover:text-primary transition-colors">About</a>
+                <a href="#skills" class="block px-3 py-2 text-foreground hover:text-primary transition-colors">Skills</a>
+                <a href="#projects" class="block px-3 py-2 text-foreground hover:text-primary transition-colors">Projects</a>
+                <a href="#certifications" class="block px-3 py-2 text-foreground hover:text-primary transition-colors">Certifications</a>
+                <a href="#resume" class="block px-3 py-2 text-foreground hover:text-primary transition-colors">Resume</a>
+                <a href="#contact" class="block px-3 py-2 text-foreground hover:text-primary transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-16 min-h-screen flex items-center hero-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <h1 class="text-5xl lg:text-7xl font-bold mb-6">
+                        <span class="gradient-text">Aryan</span><br>
+                        <span class="text-foreground">Bhatnagar</span>
+                    </h1>
+                    <p class="text-xl text-muted-foreground mb-4 font-medium">Data Analyst | BI Developer | Lifelong Learner</p>
+                    <p class="text-lg text-muted-foreground mb-8 max-w-2xl">Turning raw data into actionable insights that drive business decisions and create meaningful impact.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#resume" class="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                            <i class="fas fa-download mr-2"></i>View Resume
+                        </a>
+                        <a href="#contact" class="border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 transform hover:scale-105">
+                            <i class="fas fa-envelope mr-2"></i>Contact Me
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center lg:justify-end">
+                    <!-- Professional headshot of a young data analyst in business casual attire -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800" alt="Aryan Bhatnagar professional photo" class="rounded-2xl shadow-2xl w-80 h-80 object-cover transform hover:scale-105 transition-transform duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">About Me</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">Passionate about transforming complex datasets into clear, actionable business intelligence</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="bg-background p-8 rounded-2xl shadow-lg border border-border">
+                        <h3 class="text-2xl font-semibold mb-4 text-primary">My Journey</h3>
+                        <p class="text-muted-foreground leading-relaxed mb-4">
+                            I'm a dedicated data analyst with a passion for uncovering insights that drive strategic business decisions. My journey in data science began during my studies, where I discovered the power of transforming raw information into meaningful narratives.
+                        </p>
+                        <p class="text-muted-foreground leading-relaxed mb-4">
+                            With expertise in Python, SQL, Power BI, and Tableau, I specialize in building comprehensive business intelligence solutions. I believe that great data analysis combines technical precision with clear storytelling to make complex insights accessible to all stakeholders.
+                        </p>
+                        <p class="text-muted-foreground leading-relaxed">
+                            As a lifelong learner, I continuously explore emerging technologies and methodologies in data science, machine learning, and business intelligence to stay at the forefront of the field.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-primary/5 p-6 rounded-xl text-center border border-primary/20">
+                            <i class="fas fa-chart-line text-3xl text-primary mb-3"></i>
+                            <h4 class="font-semibold text-foreground">Data Visualization</h4>
+                        </div>
+                        <div class="bg-primary/5 p-6 rounded-xl text-center border border-primary/20">
+                            <i class="fas fa-database text-3xl text-primary mb-3"></i>
+                            <h4 class="font-semibold text-foreground">Database Management</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center">
+                    <!-- Professional photo of someone working with data analytics on multiple screens -->
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Data analytics workspace" class="rounded-2xl shadow-2xl w-full max-w-md object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Technical Skills</h2>
+                <p class="text-xl text-muted-foreground">Technologies and tools I use to bring data to life</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Programming Skills -->
+                <div class="bg-card p-8 rounded-2xl shadow-lg border border-border hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-code text-3xl text-primary mr-4"></i>
+                        <h3 class="text-2xl font-semibold">Programming</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Python</span>
+                                <span class="text-muted-foreground">90%</span>
+                            </div>
+                            <div class="w-full bg-muted rounded-full h-3">
+                                <div class="skill-bar h-3 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">SQL</span>
+                                <span class="text-muted-foreground">85%</span>
+                            </div>
+                            <div class="w-full bg-muted rounded-full h-3">
+                                <div class="skill-bar h-3 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BI Tools -->
+                <div class="bg-card p-8 rounded-2xl shadow-lg border border-border hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-chart-bar text-3xl text-primary mr-4"></i>
+                        <h3 class="text-2xl font-semibold">BI Tools</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Power BI</span>
+                                <span class="text-muted-foreground">88%</span>
+                            </div>
+                            <div class="w-full bg-muted rounded-full h-3">
+                                <div class="skill-bar h-3 rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Tableau</span>
+                                <span class="text-muted-foreground">82%</span>
+                            </div>
+                            <div class="w-full bg-muted rounded-full h-3">
+                                <div class="skill-bar h-3 rounded-full" style="width: 82%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Skills -->
+                <div class="bg-card p-8 rounded-2xl shadow-lg border border-border hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-tools text-3xl text-primary mr-4"></i>
+                        <h3 class="text-2xl font-semibold">Other Tools</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Excel</span>
+                                <span class="text-muted-foreground">92%</span>
+                            </div>
+                            <div class="w-full bg-muted rounded-full h-3">
+                                <div class="skill-bar h-3 rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Machine Learning</span>
+                                <span class="text-muted-foreground">75%</span>
+                            </div>
+                            <div class="w-full bg-muted rounded-full h-3">
+                                <div class="skill-bar h-3 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Soft Skills Section -->
+            <div class="mt-16">
+                <h3 class="text-3xl font-bold text-center mb-12">Soft Skills</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-card p-6 rounded-xl text-center border border-border hover:shadow-lg transition-shadow duration-300">
+                        <i class="fas fa-lightbulb text-4xl text-primary mb-4"></i>
+                        <h4 class="font-semibold mb-2">Problem Solving</h4>
+                        <p class="text-sm text-muted-foreground">Creative analytical thinking</p>
+                    </div>
+                    <div class="bg-card p-6 rounded-xl text-center border border-border hover:shadow-lg transition-shadow duration-300">
+                        <i class="fas fa-users text-4xl text-primary mb-4"></i>
+                        <h4 class="font-semibold mb-2">Communication</h4>
+                        <p class="text-sm text-muted-foreground">Clear data storytelling</p>
+                    </div>
+                    <div class="bg-card p-6 rounded-xl text-center border border-border hover:shadow-lg transition-shadow duration-300">
+                        <i class="fas fa-eye text-4xl text-primary mb-4"></i>
+                        <h4 class="font-semibold mb-2">Attention to Detail</h4>
+                        <p class="text-sm text-muted-foreground">Precision in analysis</p>
+                    </div>
+                    <div class="bg-card p-6 rounded-xl text-center border border-border hover:shadow-lg transition-shadow duration-300">
+                        <i class="fas fa-rocket text-4xl text-primary mb-4"></i>
+                        <h4 class="font-semibold mb-2">Continuous Learning</h4>
+                        <p class="text-sm text-muted-foreground">Always evolving skills</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Featured Projects</h2>
+                <p class="text-xl text-muted-foreground">Showcasing my data analysis and visualization work</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-background rounded-2xl shadow-lg border border-border overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <!-- Sales dashboard with charts and graphs display -->
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Sales Analytics Dashboard" class="w-full h-48 object-cover">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-3">Sales Analytics Dashboard</h3>
+                        <p class="text-muted-foreground mb-4">Comprehensive Power BI dashboard analyzing sales performance across multiple regions and time periods. Features interactive visualizations, KPI tracking, and automated reporting.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Power BI</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">SQL</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">DAX</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium" data-mock="true">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium" data-mock="true">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-background rounded-2xl shadow-lg border border-border overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <!-- Customer behavior analysis charts and heatmaps -->
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Customer Behavior Analysis" class="w-full h-48 object-cover">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-3">Customer Behavior Analysis</h3>
+                        <p class="text-muted-foreground mb-4">Python-based analysis of customer purchasing patterns using machine learning algorithms. Includes clustering analysis and predictive modeling for customer lifetime value.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Pandas</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Scikit-learn</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium" data-mock="true">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium" data-mock="true">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-background rounded-2xl shadow-lg border border-border overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <!-- Financial data visualization with trending charts -->
+                    <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Financial Data Visualization" class="w-full h-48 object-cover">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-3">Financial Data Visualization</h3>
+                        <p class="text-muted-foreground mb-4">Interactive Tableau dashboard for financial performance tracking. Features real-time data connections, drill-down capabilities, and automated alerts for key metrics.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Tableau</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">SQL</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Excel</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium" data-mock="true">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium" data-mock="true">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="bg-background rounded-2xl shadow-lg border border-border overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <!-- Supply chain optimization data flow diagram -->
+                    <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Supply Chain Optimization" class="w-full h-48 object-cover">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-3">Supply Chain Optimization</h3>
+                        <p class="text-muted-foreground mb-4">End-to-end analysis of supply chain efficiency using advanced analytics. Includes inventory optimization, demand forecasting, and operational KPI tracking.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Power BI</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">R</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium" data-mock="true">
+                                <i class="fab fa-github mr-2"></i>GitHub
+                            </a>
+                            <a href="#" class="text-primary hover:text-primary/80 font-medium" data-mock="true">
+                                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Certifications</h2>
+                <p class="text-xl text-muted-foreground">Professional certifications and achievements</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Certificate 1 -->
+                <div class="bg-card p-8 rounded-2xl shadow-lg border border-border hover:shadow-xl transition-all duration-300 cursor-pointer cert-card" data-cert="cert1">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-certificate text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Microsoft Power BI Data Analyst</h3>
+                        <p class="text-muted-foreground mb-4">Microsoft</p>
+                        <span class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">2024</span>
+                    </div>
+                </div>
+                
+                <!-- Certificate 2 -->
+                <div class="bg-card p-8 rounded-2xl shadow-lg border border-border hover:shadow-xl transition-all duration-300 cursor-pointer cert-card" data-cert="cert2">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-chart-line text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Google Data Analytics Professional</h3>
+                        <p class="text-muted-foreground mb-4">Google / Coursera</p>
+                        <span class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">2024</span>
+                    </div>
+                </div>
+                
+                <!-- Certificate 3 -->
+                <div class="bg-card p-8 rounded-2xl shadow-lg border border-border hover:shadow-xl transition-all duration-300 cursor-pointer cert-card" data-cert="cert3">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-database text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">SQL for Data Science</h3>
+                        <p class="text-muted-foreground mb-4">IBM / Coursera</p>
+                        <span class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">2023</span>
+                    </div>
+                </div>
+                
+                <!-- Certificate 4 -->
+                <div class="bg-card p-8 rounded-2xl shadow-lg border border-border hover:shadow-xl transition-all duration-300 cursor-pointer cert-card" data-cert="cert4">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-python text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Python for Data Analysis</h3>
+                        <p class="text-muted-foreground mb-4">HP Life</p>
+                        <span class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">2023</span>
+                    </div>
+                </div>
+                
+                <!-- Certificate 5 -->
+                <div class="bg-card p-8 rounded-2xl shadow-lg border border-border hover:shadow-xl transition-all duration-300 cursor-pointer cert-card" data-cert="cert5">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-brain text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Machine Learning Fundamentals</h3>
+                        <p class="text-muted-foreground mb-4">LinkedIn Learning</p>
+                        <span class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">2023</span>
+                    </div>
+                </div>
+                
+                <!-- Certificate 6 -->
+                <div class="bg-card p-8 rounded-2xl shadow-lg border border-border hover:shadow-xl transition-all duration-300 cursor-pointer cert-card" data-cert="cert6">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-chart-bar text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Tableau Desktop Specialist</h3>
+                        <p class="text-muted-foreground mb-4">Tableau</p>
+                        <span class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">2023</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Modal -->
+    <div id="cert-modal" class="modal">
+        <div class="bg-card rounded-2xl p-8 max-w-2xl mx-4 relative">
+            <button id="close-modal" class="absolute top-4 right-4 text-muted-foreground hover:text-foreground text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modal-content" class="text-center">
+                <!-- Modal content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-20 bg-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Resume</h2>
+                <p class="text-xl text-muted-foreground">Download my complete professional resume</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-background rounded-2xl shadow-lg border border-border p-8">
+                    <div class="grid lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-4">Professional Resume</h3>
+                            <p class="text-muted-foreground mb-6">Comprehensive overview of my experience, skills, education, and achievements in data analysis and business intelligence.</p>
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center text-sm text-muted-foreground">
+                                    <i class="fas fa-check-circle text-primary mr-3"></i>
+                                    <span>Complete work experience and projects</span>
+                                </div>
+                                <div class="flex items-center text-sm text-muted-foreground">
+                                    <i class="fas fa-check-circle text-primary mr-3"></i>
+                                    <span>Technical skills and certifications</span>
+                                </div>
+                                <div class="flex items-center text-sm text-muted-foreground">
+                                    <i class="fas fa-check-circle text-primary mr-3"></i>
+                                    <span>Education and achievements</span>
+                                </div>
+                            </div>
+                            <a href="#" class="inline-flex items-center bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105" data-mock="true" data-implementation="Link to actual PDF resume file">
+                                <i class="fas fa-download mr-2"></i>
+                                Download PDF Resume
+                            </a>
+                        </div>
+                        <div class="flex justify-center">
+                            <!-- Preview of a professional resume document -->
+                            <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Resume preview" class="rounded-xl shadow-lg max-w-md w-full">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+                <p class="text-xl text-muted-foreground">Let's discuss how we can work together on your next data project</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-card p-8 rounded-2xl shadow-lg border border-border">
+                    <h3 class="text-2xl font-semibold mb-6">Send me a message</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <!-- TODO: Implement form submission functionality -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-foreground mb-2">Name *</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background" placeholder="Your full name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-foreground mb-2">Email *</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background" placeholder="your.email@example.com">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-foreground mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background" placeholder="Project inquiry">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-foreground mb-2">Message *</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background resize-none" placeholder="Tell me about your project or inquiry..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="bg-card p-8 rounded-2xl shadow-lg border border-border">
+                        <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Email</h4>
+                                    <a href="mailto:aryan.bhatnagar@email.com" class="text-muted-foreground hover:text-primary transition-colors" data-mock="true">aryan.bhatnagar@email.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fab fa-linkedin text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">LinkedIn</h4>
+                                    <a href="https://linkedin.com/in/aryan-bhatnagar" target="_blank" class="text-muted-foreground hover:text-primary transition-colors" data-mock="true">linkedin.com/in/aryan-bhatnagar</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fab fa-github text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">GitHub</h4>
+                                    <a href="https://github.com/aryanbhatnagar" target="_blank" class="text-muted-foreground hover:text-primary transition-colors" data-mock="true">github.com/aryanbhatnagar</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fab fa-instagram text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Instagram</h4>
+                                    <a href="https://instagram.com/bhatnagararyan2601" target="_blank" class="text-muted-foreground hover:text-primary transition-colors" data-mock="true">@bhatnagararyan2601</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-primary/5 p-8 rounded-2xl border border-primary/20">
+                        <h3 class="text-xl font-semibold mb-4">Let's Work Together</h3>
+                        <p class="text-muted-foreground mb-4">I'm always interested in new opportunities and challenging projects. Whether you need data analysis, business intelligence solutions, or consultation on data strategy, I'd love to hear from you.</p>
+                        <p class="text-sm text-muted-foreground">Response time: Usually within 24 hours</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-card border-t border-border py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <span class="text-2xl font-bold gradient-text mr-2">AB</span>
+                        <span class="text-xl font-semibold">Aryan Bhatnagar</span>
+                    </div>
+                    <p class="text-muted-foreground mb-4">Data Analyst passionate about turning complex data into actionable business insights.</p>
+                    <div class="flex space-x-4">
+                        <a href="mailto:aryan.bhatnagar@email.com" class="text-muted-foreground hover:text-primary transition-colors" data-mock="true">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/aryan-bhatnagar" target="_blank" class="text-muted-foreground hover:text-primary transition-colors" data-mock="true">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://github.com/aryanbhatnagar" target="_blank" class="text-muted-foreground hover:text-primary transition-colors" data-mock="true">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://instagram.com/bhatnagararyan2601" target="_blank" class="text-muted-foreground hover:text-primary transition-colors" data-mock="true">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="#home" class="block text-muted-foreground hover:text-primary transition-colors">Home</a>
+                        <a href="#about" class="block text-muted-foreground hover:text-primary transition-colors">About</a>
+                        <a href="#skills" class="block text-muted-foreground hover:text-primary transition-colors">Skills</a>
+                        <a href="#projects" class="block text-muted-foreground hover:text-primary transition-colors">Projects</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <div class="space-y-2">
+                        <a href="#certifications" class="block text-muted-foreground hover:text-primary transition-colors">Certifications</a>
+                        <a href="#resume" class="block text-muted-foreground hover:text-primary transition-colors">Resume</a>
+                        <a href="#contact" class="block text-muted-foreground hover:text-primary transition-colors">Contact</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-border mt-8 pt-8 text-center">
+                <p class="text-muted-foreground">© 2025 Aryan Bhatnagar | Built with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        (function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        })();
+
+        // Certificate modal functionality
+        (function() {
+            const certCards = document.querySelectorAll('.cert-card');
+            const modal = document.getElementById('cert-modal');
+            const modalContent = document.getElementById('modal-content');
+            const closeBtn = document.getElementById('close-modal');
+            
+            const certificates = {
+                cert1: {
+                    title: 'Microsoft Power BI Data Analyst',
+                    issuer: 'Microsoft',
+                    date: '2024',
+                    description: 'Comprehensive certification covering data preparation, modeling, visualization, and analysis using Power BI.',
+                    skills: ['Power BI', 'DAX', 'Power Query', 'Data Modeling'],
+                    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600'
+                },
+                cert2: {
+                    title: 'Google Data Analytics Professional',
+                    issuer: 'Google / Coursera',
+                    date: '2024',
+                    description: 'Professional certificate program covering the entire data analysis process, from data collection to insights presentation.',
+                    skills: ['R', 'SQL', 'Tableau', 'Data Cleaning'],
+                    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600'
+                },
+                cert3: {
+                    title: 'SQL for Data Science',
+                    issuer: 'IBM / Coursera',
+                    date: '2023',
+                    description: 'Advanced SQL techniques for data science applications, including complex queries, joins, and database optimization.',
+                    skills: ['SQL', 'Database Design', 'Query Optimization'],
+                    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600'
+                },
+                cert4: {
+                    title: 'Python for Data Analysis',
+                    issuer: 'HP Life',
+                    date: '2023',
+                    description: 'Comprehensive Python programming course focused on data analysis libraries and techniques.',
+                    skills: ['Python', 'Pandas', 'NumPy', 'Matplotlib'],
+                    image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600'
+                },
+                cert5: {
+                    title: 'Machine Learning Fundamentals',
+                    issuer: 'LinkedIn Learning',
+                    date: '2023',
+                    description: 'Introduction to machine learning concepts, algorithms, and practical applications in business contexts.',
+                    skills: ['Machine Learning', 'Scikit-learn', 'Predictive Modeling'],
+                    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600'
+                },
+                cert6: {
+                    title: 'Tableau Desktop Specialist',
+                    issuer: 'Tableau',
+                    date: '2023',
+                    description: 'Official Tableau certification demonstrating proficiency in data connection, field management, and basic visualization.',
+                    skills: ['Tableau', 'Data Visualization', 'Dashboard Design'],
+                    image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600'
+                }
+            };
+            
+            certCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const certId = card.dataset.cert;
+                    const cert = certificates[certId];
+                    
+                    if (cert) {
+                        modalContent.innerHTML = `
+                            <img src="${cert.image}" alt="${cert.title}" class="w-full h-64 object-cover rounded-lg mb-6">
+                            <h3 class="text-2xl font-bold mb-2">${cert.title}</h3>
+                            <p class="text-primary font-semibold mb-2">${cert.issuer}</p>
+                            <p class="text-muted-foreground mb-4">${cert.date}</p>
+                            <p class="text-muted-foreground mb-6">${cert.description}</p>
+                            <div class="flex flex-wrap gap-2">
+                                ${cert.skills.map(skill => `<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">${skill}</span>`).join('')}
+                            </div>
+                        `;
+                        modal.classList.add('active');
+                    }
+                });
+            });
+            
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        })();
+
+        // Contact form handling
+        (function() {
+            const form = document.getElementById('contact-form');
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // TODO: Implement actual form submission logic
+                // This would typically involve sending data to a backend service
+                
+                // Mock success feedback
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+                submitBtn.disabled = true;
+                submitBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
+                    form.reset();
+                }, 3000);
+            });
+        })();
+
+        // Smooth scrolling for navigation links
+        (function() {
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 80; // Account for fixed header
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        })();
+
+        // Navbar background on scroll
+        (function() {
+            const navbar = document.querySelector('nav');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-lg');
+                } else {
+                    navbar.classList.remove('shadow-lg');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
