@@ -18,6 +18,16 @@ export default function Certifications() {
   const certificates: CertificateData[] = [
     {
       id: 'cert1',
+      title: 'Career Essentials in Data Analysis',
+      issuer: 'Microsoft and LinkedIn',
+      date: 'Aug 2025',
+      description: 'Comprehensive learning path covering data analysis fundamentals, data visualization techniques, and analytics best practices.',
+      skills: ['Data Analysis', 'Data Visualization', 'Data Analytics'],
+      image: '@assets/Certificate linkdln_1757100549149.png',
+      icon: <Tag className="text-3xl text-primary" />
+    },
+    {
+      id: 'cert2',
       title: 'Microsoft Power BI Data Analyst',
       issuer: 'Microsoft',
       date: '2024',
@@ -27,7 +37,7 @@ export default function Certifications() {
       icon: <Tag className="text-3xl text-primary" />
     },
     {
-      id: 'cert2',
+      id: 'cert3',
       title: 'Google Data Analytics Professional',
       issuer: 'Google / Coursera',
       date: '2024',
@@ -37,7 +47,7 @@ export default function Certifications() {
       icon: <TrendingUp className="text-3xl text-primary" />
     },
     {
-      id: 'cert3',
+      id: 'cert4',
       title: 'SQL for Data Science',
       issuer: 'IBM / Coursera',
       date: '2023',
@@ -47,7 +57,7 @@ export default function Certifications() {
       icon: <Database className="text-3xl text-primary" />
     },
     {
-      id: 'cert4',
+      id: 'cert5',
       title: 'Python for Data Analysis',
       issuer: 'HP Life',
       date: '2023',
@@ -57,7 +67,7 @@ export default function Certifications() {
       icon: <Code className="text-3xl text-primary" />
     },
     {
-      id: 'cert5',
+      id: 'cert6',
       title: 'Machine Learning Fundamentals',
       issuer: 'LinkedIn Learning',
       date: '2023',
@@ -67,7 +77,7 @@ export default function Certifications() {
       icon: <Brain className="text-3xl text-primary" />
     },
     {
-      id: 'cert6',
+      id: 'cert7',
       title: 'Tableau Desktop Specialist',
       issuer: 'Tableau',
       date: '2023',
