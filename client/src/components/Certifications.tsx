@@ -110,21 +110,32 @@ export default function Certifications() {
             <div 
               key={cert.id}
               onClick={() => handleCertClick(cert)}
-              className="bg-card p-8 rounded-2xl shadow-lg border border-border hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-scaleIn"
+              className="bg-card p-6 rounded-2xl shadow-lg border border-border hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 animate-scaleIn overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
               data-testid={`certificate-${cert.id}`}
             >
               <div className="text-center">
-                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                {/* Certificate Photo */}
+                <div className="relative mb-4 overflow-hidden rounded-lg">
+                  <img 
+                    src={cert.image} 
+                    alt={`${cert.title} certificate`}
+                    className="w-full h-32 object-cover hover:scale-110 transition-transform duration-300"
+                    data-testid={`cert-photo-${cert.id}`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+                
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   {cert.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-2" data-testid={`cert-title-${cert.id}`}>
+                <h3 className="text-lg font-semibold mb-2" data-testid={`cert-title-${cert.id}`}>
                   {cert.title}
                 </h3>
-                <p className="text-muted-foreground mb-4" data-testid={`cert-issuer-${cert.id}`}>
+                <p className="text-muted-foreground text-sm mb-3" data-testid={`cert-issuer-${cert.id}`}>
                   {cert.issuer}
                 </p>
-                <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm" data-testid={`cert-date-${cert.id}`}>
+                <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs" data-testid={`cert-date-${cert.id}`}>
                   {cert.date}
                 </span>
               </div>
